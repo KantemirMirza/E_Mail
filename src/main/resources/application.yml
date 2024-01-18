@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+    datasource:
+      url: jdbc:mysql://${MY_SQL_HOST}:${MY_SQL_PORT}/${MY_SQL_DB}
+      username: ${MY_SQL_root}
+      password: ${MY_SQL_root}  
+    jpa:
+      generate-ddl: true
+      show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+           time_zone: UTC
+           globally_quoted_identifiers: true
+           dialect: org.hibernate.dialect.mySQLDialect
+           format_sql: true
+
+  mail:
+    host: ${EMAIL_HOST}
+    post: ${EMAIL_PORT}
+    username: ${EMAIL_ID}
+    password: ${EMAIL_PASSWORD}
+    default-encoding: UTF-8
+    properties:
+      mail:
+        mime:
+          charset: UTF
+          smtp:
+            writetimeout: 10000
+            connectiontimeout: 10000
+            timeout: 10000
+            auth: true
+            starttis:
+              enable: true
+              requared: true
+        verify:
+          host: ${VERIFY_EMAIL_HOST}
+
+server:
+  port: ${SERVER_PORT}
